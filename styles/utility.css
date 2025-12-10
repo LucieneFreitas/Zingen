@@ -1,0 +1,97 @@
+/* ============================================================
+   ESPAÇAMENTOS UTILITÁRIOS (padding)
+   Essas classes aplicam padding vertical (py) ou horizontal (px)
+   usando variáveis globais definidas no :root.
+   ============================================================ */
+
+.py-base {
+  padding-block: var(--py-base); /* padding top + bottom */
+}
+
+.py-lg {
+  padding-block: var(--py-lg); /* padding maior vertical */
+}
+
+.py-xl {
+  padding-block: var(--py-xl); /* padding extra grande vertical */
+}
+
+.px-lg {
+  padding-inline: var(--px-lg); /* padding left + right */
+}
+
+/* ============================================================
+   CONTAINER CENTRALIZADO
+   Define limite de largura e garante centralização da página.
+   Usa min() para manter responsividade.
+   ============================================================ */
+.container {
+  --max-width: 375px; /* largura padrão para mobile */
+  width: min(var(--max-width), 100% - var(--px-lg) * 2);
+  margin-inline: auto; /* centraliza horizontalmente */
+  /* border: solid violet; */ /* usado apenas para debug */
+}
+
+/* ============================================================
+   ELEMENTOS QUE APARECEM SOMENTE NO DESKTOP
+   Por padrão ficam "display: none" até o breakpoint.
+   ============================================================ */
+.desktop-only {
+  display: none;
+}
+
+/* ============================================================
+   GRID UTILITÁRIO
+   even-columns cria colunas com espaçamento uniforme.
+   ============================================================ */
+.even-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ============================================================
+   FLEX UTILITÁRIOS
+   Atalhos para display flex e alinhamento.
+   ============================================================ */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center; /* centraliza itens verticalmente */
+}
+
+/* Gaps reutilizáveis (Tailwind vibes) */
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-1\.5 {
+  gap: 1.5rem;
+}
+
+/* Display grid genérico */
+.grid {
+  display: grid;
+}
+
+/* ============================================================
+   BREAKPOINT: DESKTOP
+   A partir de 80em (~1280px)
+   ============================================================ */
+@media (width >= 80em) {
+
+  .container {
+    --max-width: 80rem; /* aumenta o limite de largura para desktop */
+  }
+
+  .desktop-only {
+    display: initial; /* agora esses itens ficam visíveis */
+  }
+
+  /* even-columns vira um layout com colunas fixas de largura igual */
+  .even-columns {
+    grid-auto-flow: column;   /* organiza em colunas */
+    grid-auto-columns: 1fr;   /* cada coluna ocupa fração igual */
+  }
+}

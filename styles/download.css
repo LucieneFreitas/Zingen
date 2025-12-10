@@ -1,0 +1,58 @@
+/* ============================
+   SEÇÃO DE DOWNLOAD (#download)
+   ============================ */
+#download {
+
+  /* ============================
+     CARD PRINCIPAL
+     ============================ */
+  .card {
+    /* Espaçamento interno: 
+       top: 3rem
+       left/right: 1.5rem
+       bottom: 15rem (cria espaço para a imagem sobreposta) */
+    padding: 3rem 1.5rem 15rem;
+
+    position: relative; /* Necessário para posicionar a imagem dentro do card */
+
+    /* Seleciona apenas a imagem FILHA DIRETA do card */
+    & > img {
+      width: 14.5rem;          /* controla o tamanho da imagem */
+      position: absolute;      /* permite mover a imagem livremente */
+      bottom: 0;               /* fixa a imagem na parte inferior do card */
+      right: -3.5rem;          /* desloca a imagem para fora do card (efeito moderno) */
+    }
+  }
+
+  /* ============================
+     BOTÕES DE DOWNLOAD
+     (App Store e Play Store)
+     ============================ */
+  .buttons {
+    flex-wrap: wrap;     /* permite quebrar linha em telas pequenas */
+    margin-top: 2rem;
+  }
+
+  /* ============================
+     RESPONSIVIDADE PARA TELAS GRANDES
+     width >= 80em (~1280px)
+     ============================ */
+  @media (width >= 80em) {
+
+    .card {
+      /* Aumenta o espaçamento para um layout mais confortável em desktop */
+      padding: 8.75rem 5rem;
+
+      /* Seleciona o PRIMEIRO DIV dentro do card
+         (onde ficam título, textos e botões) */
+      & > div:nth-child(1) {
+        max-width: 40rem; /* limita largura do conteúdo para manter legibilidade */
+      }
+
+      /* Ajusta o tamanho da imagem para telas grandes */
+      & > img {
+        width: 29.125rem;
+      }
+    }
+  }
+}

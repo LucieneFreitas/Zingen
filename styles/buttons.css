@@ -1,0 +1,123 @@
+/* ============================
+   BOTÃO BASE (.btn)
+   ============================ */
+
+.btn {
+  /* Variáveis internas do botão (cores) */
+  --btn-bg-color: var(--text-color-primary); /* Cor de fundo inicial */
+  --btn-color: var(--bg-color);              /* Cor do texto */
+
+  border: 0;
+  background-color: transparent;
+
+  /* Layout flex para centralizar conteúdo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content; /* O botão se ajusta ao tamanho do conteúdo */
+
+  border-radius: 0.5rem; /* Arredonda bordas */
+
+  /* Tipografia: peso, tamanho e família da fonte */
+  font: var(--fw-md) var(--fs-base) / 1.5rem var(--ff-sans);
+
+  cursor: pointer; /* Mostra mãozinha ao passar o mouse */
+
+  /* Aplicando as variáveis definidas acima */
+  background: var(--btn-bg-color);
+  color: var(--btn-color);
+}
+
+/* ============================
+   HOVER DO BOTÃO
+   Troca cores com gradiente
+   ============================ */
+.btn:hover {
+  /* Troca cor do fundo por um gradiente ao passar o mouse */
+  --btn-bg-color: linear-gradient(
+    90deg,
+    var(--brand-color-secondary) 0%,
+    var(--brand-color-primary) 100%
+  );
+
+  /* Cor do texto no hover */
+  --btn-color: var(--surface-color);
+
+  /* Reset de clip para o background funcionar corretamente */
+  -webkit-background-clip: initial;
+  background-clip: initial;
+
+  color: var(--btn-color);
+}
+
+/* ============================
+   TAMANHOS DOS BOTÕES
+   (Small, Medium, Large)
+   ============================ */
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: var(--fs-sm);
+}
+
+.btn-md {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--fs-base);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* ============================
+   BOTÕES QUE USAM aria-label
+   (Usados quando o botão tem 
+   apenas ícone e não texto)
+   ============================ */
+
+.btn[aria-label] {
+  position: relative; /* Necessário para ::before e ::after funcionarem */
+
+  /* Camada interna para efeito visual */
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    inset: 1px; /* Preenche quase todo o botão */
+    background-color: var(--bg-color);
+  }
+
+  /* Texto acessível via aria-label renderizado como gradiente */
+  &::after {
+    content: attr(aria-label); /* Usa o valor de aria-label como texto */
+    background: var(--btn-bg-color);
+
+    /* Aplica o gradiente somente ao texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent; /* Torna o texto transparente para revelar o gradiente */
+
+    position: relative;
+    z-index: 1; /* Fica acima do ::before */
+  }
+}
+
+/* ============================
+   RESPONSIVIDADE (80em ≈ 1280px)
+   Aumenta tamanhos dos botões
+   em telas grandes
+   ============================ */
+
+@media (width >= 80em) {
+  .btn-sm {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--fs-base);
+  }
+  .btn-md {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}

@@ -1,0 +1,68 @@
+/* ============================================================
+   ÍCONES SOCIAIS NO FOOTER
+   A classe .social transforma cada <a> em um ícone clicável.
+   A imagem do ícone muda dinamicamente conforme o aria-label.
+   ============================================================ */
+a.social {
+  /* Variável que armazenará a imagem do ícone atual */
+  --bg-img: '';
+
+  /* A imagem de fundo será definida por cada rede social */
+  background-image: var(--bg-img);
+
+  /* Tamanho do ícone */
+  width: 1.5rem;
+  height: 1.5rem;
+
+  display: block; /* Necessário para permitir largura/altura */
+
+  /* Reset de propriedades de clipping */
+  -webkit-background-clip: initial;
+  background-clip: initial;
+
+  /* ============================================================
+     ÍCONE DO TIKTOK
+     O seletor usa o atributo aria-label para identificar qual ícone carregar.
+     ============================================================ */
+  &[aria-label='tiktok'] {
+    --bg-img: url(../assets/icons/tiktok.svg);
+
+    /* Ícone muda ao passar o mouse */
+    &:hover {
+      --bg-img: url(../assets/icons/tiktok-hover.svg);
+    }
+  }
+
+  /* ============================================================
+     ÍCONE DO INSTAGRAM
+     ============================================================ */
+  &[aria-label='instagram'] {
+    --bg-img: url(../assets/icons/instagram.svg);
+
+    &:hover {
+      --bg-img: url(../assets/icons/instagram-hover.svg);
+    }
+  }
+
+  /* ============================================================
+     ÍCONE DO TWITTER
+     ============================================================ */
+  &[aria-label='twitter'] {
+    --bg-img: url(../assets/icons/twitter.svg);
+
+    &:hover {
+      --bg-img: url(../assets/icons/twitter-hover.svg);
+    }
+  }
+
+  /* ============================================================
+     ÍCONE DO DISCORD
+     ============================================================ */
+  &[aria-label='discord'] {
+    --bg-img: url(../assets/icons/discord.svg);
+
+    &:hover {
+      --bg-img: url(../assets/icons/discord-hover.svg);
+    }
+  }
+}

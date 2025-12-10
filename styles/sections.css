@@ -1,0 +1,69 @@
+/* ============================================================
+   SEÇÃO DA IMAGEM DE SMARTPHONES (#smartphones-img)
+   ============================================================ */
+#smartphones-img {
+  margin-top: 5rem; 
+  /* Cria espaço acima da imagem — separação visual entre seções */
+
+  background: url(../assets/illustration.svg) top/cover;
+  /* 
+    Define uma imagem de fundo:
+    - 'top' → posiciona a imagem no topo
+    - 'cover' → faz a imagem cobrir toda a área, ajustando proporcionalmente
+    Usado para criar um efeito visual decorativo no mobile.
+  */
+}
+
+/* ============================================================
+   ESTILOS GERAIS PARA QUALQUER <section>
+   (Aplicados a headers, strong, títulos e parágrafos)
+   ============================================================ */
+section {
+
+  /* ---------- Estilos do <header> interno da seção ---------- */
+  & header {
+
+    /* Texto em <strong> usado como subtítulo */
+    & strong {
+      display: block; 
+      /* Transforma strong em elemento de bloco para quebrar linha */
+
+      font: var(--fw-md) var(--fs-sm) / 100% var(--ff-sans);
+      /* 
+        Fonte resumida:
+        - peso médio
+        - tamanho pequeno
+        - line-height compacto
+        - família sans serif
+      */
+
+      letter-spacing: 0.08rem;     /* Aumenta espaçamento entre letras */
+      text-transform: uppercase;   /* Deixa o subtítulo em maiúsculas */
+      color: var(--brand-color-primary);  /* Cor de destaque da marca */
+    }
+
+    /* Espaço acima do título principal da seção */
+    & h2 {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* ---------- Parágrafos dentro de qualquer section ---------- */
+  & p {
+    margin-top: 0.5rem;                     /* Espaço após o título */
+    color: var(--text-color-secondary);     /* Tom mais suave para leitura */
+  }
+}
+
+/* ============================================================
+   RESPONSIVIDADE — Telas grandes (>= 80em ~1280px)
+   ============================================================ */
+@media (width >= 80em) {
+  #smartphones-img {
+    display: none;
+    /* 
+      Em telas grandes a imagem decorativa é removida,
+      pois o layout de desktop já apresenta outra composição visual.
+    */
+  }
+}

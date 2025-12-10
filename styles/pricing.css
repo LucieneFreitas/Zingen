@@ -1,0 +1,160 @@
+/* ============================================================
+   SEÇÃO DE PLANOS E PREÇOS (#pricing)
+   ============================================================ */
+#pricing {
+  /* Tamanho padrão da fonte de preços (pode mudar no desktop) */
+  --fs-price: 2rem;
+
+  /* -------------------------------
+     Cabeçalho da seção (título e subtítulo)
+     ------------------------------- */
+  & header {
+    text-align: center; /* Centraliza todo o conteúdo */
+  }
+
+  /* Espaço acima dos cards de planos */
+  & .cards {
+    margin-top: 2rem;
+  }
+
+  /* Títulos dos planos (ex.: Básico, Premium, Família) */
+  & h3 {
+    font-size: 1.25rem;
+    margin-top: 0; /* Remove margem superior padrão */
+  }
+
+  /* Parágrafos dentro dos cards */
+  & .card p {
+    margin-top: 0.25rem; /* Aproxima mais do título */
+  }
+
+  /* ----------------------------------------------------------
+     COMPONENTE PERSONALIZADO <zin-pricing>
+     Exibe apenas o preço de forma destacada
+     ---------------------------------------------------------- */
+  & zin-pricing {
+    display: block; /* Permite padding vertical */
+    padding-block: 1.5rem;
+
+    /* Peso da fonte, tamanho e família aplicados ao preço */
+    font: var(--fw-bold) var(--fs-price) / 1.2 var(--ff-sans);
+  }
+
+  /* Texto pequeno dentro do preço (ex.: "/mês") */
+  & zin-pricing small {
+    font: var(--fw-base) 1rem/125% var(--ff-sans);
+    color: var(--text-color-secondary);
+  }
+
+  /* Botão ocupa toda a largura do card */
+  & .btn {
+    width: 100%;
+  }
+
+  /* Linha divisória entre preço e lista de benefícios */
+  & .separator {
+    height: 1px;
+    margin-block: 2rem;
+    background: radial-gradient(
+      var(--text-color-secondary),
+      var(--surface-color) 70%
+    );
+    /* degrade sutil que se dissipa nas bordas */
+  }
+
+  /* Lista de benefícios com ícone de check */
+  & li {
+    color: var(--text-color-secondary);
+    background: url(../assets/icons/Check.svg) no-repeat;
+    padding-left: 2rem; /* espaço para caber o ícone */
+  }
+
+  /* Texto pequeno logo após a lista (apenas quando existir) */
+  & ul + small {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+  }
+
+  /* ============================================================
+     PLANO PREMIUM — Destaque visual
+     ============================================================ */
+  & .premium {
+    position: relative; /* Necessário para o ::before de borda */
+    padding: 2px;       /* Largura do contorno gradiente */
+
+    /* Borda externa com gradiente */
+    &::before {
+      content: '';
+      background: linear-gradient(
+        90deg,
+        var(--brand-color-secondary),
+        var(--brand-color-primary)
+      );
+      position: absolute;
+      inset: 0;            /* cobre todo elemento */
+      border-radius: 1.5rem;
+      z-index: -1;         /* fica atrás do conteúdo */
+    }
+
+    /* -------------------------------
+       Card interno do plano Premium
+       ------------------------------- */
+    & .card {
+      padding-top: 4.25rem; /* Espaço para o badge (span) */
+
+      /* Badge "1 mês grátis" */
+      & > span {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        padding: 0.75rem 2rem;
+        background: linear-gradient(
+          90deg,
+          var(--brand-color-secondary),
+          var(--brand-color-primary)
+        );
+
+        border-top-left-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+
+        font: 600 var(--fs-sm) var(--ff-sans);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--bg-color); /* Contraste do texto */
+      }
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVIDADE — Telas grandes (>= 80em ~1280px)
+     ============================================================ */
+  @media (width >= 80em) {
+    /* Aumenta o tamanho do preço */
+    --fs-price: 2.5rem;
+
+    /* Limita largura do header e centraliza */
+    & header {
+      max-width: 50rem;
+      margin-inline: auto;
+    }
+
+    /* Card premium ganha mais espaço inferior */
+    & .premium .card {
+      padding-bottom: 6rem;
+    }
+
+    /* Ajuste fino em botões médios dentro da seção */
+    .btn-md {
+      padding: 0.75rem 1.5rem;
+      font-size: var(--fs-base);
+    }
+
+    /* Ajuste para o terceiro card especificamente */
+    & .card:nth-child(3) .separator {
+      margin-block: 1.5rem;
+    }
+  }
+}

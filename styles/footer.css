@@ -1,0 +1,98 @@
+/* ============================
+   FOOTER PRINCIPAL
+   Estilos gerais da área
+   ============================ */
+footer {
+  color: var(--text-color-secondary);   /* Cor padrão do texto no footer */
+  font-weight: var(--fw-md);            /* Peso de fonte usado no conteúdo */
+
+  /* ----------------------------
+     Ajuste de container interno
+     ---------------------------- */
+  & .container {
+    padding-inline: 3rem;               /* Espaço lateral (left/right) */
+  }
+
+  /* ----------------------------
+     Espaçamento entre elementos
+     .container e .top
+     ---------------------------- */
+  & .container,
+  & .top {
+    gap: 3rem;                          /* Distância entre itens */
+  }
+
+  /* ----------------------------
+     Menu de colunas do footer
+     (Produto, Empresa, Legal)
+     ---------------------------- */
+  & nav.even-columns {
+    gap: 4rem;                          /* Espaço maior entre colunas */
+  }
+
+  /* ----------------------------
+     Listas internas (ul)
+     Garantindo alinhamento
+     ---------------------------- */
+  & .top ul {
+    align-content: start;               /* Evita empurrar itens pro meio */
+  }
+
+  /* ----------------------------
+     Títulos das listas
+     Ex: Produto / Empresa / Legal
+     ---------------------------- */
+  & .title {
+    font-size: 0.75rem;
+    letter-spacing: 0.08rem;            /* Aumenta espaçamento entre letras */
+    text-transform: uppercase;          /* Deixa tudo maiúsculo */
+    color: var(--brand-color-primary);  /* Destaque na cor da marca */
+  }
+
+  /* ============================
+     PARTE INFERIOR DO FOOTER 
+     (ícones sociais + direitos autorais)
+     ============================ */
+  & .bottom {
+    flex-wrap: wrap;                    /* Permite quebrar linha em telas pequenas */
+
+    /* Div com ícones sociais empurra o texto para a direita */
+    & > div {
+      margin-right: auto;
+    }
+
+    & span {
+      font-size: 0.875rem;              /* Tamanho do texto de copyright */
+    }
+  }
+
+  /* ============================
+     RESPONSIVIDADE (≥ 80em ~1280px)
+     Ajustes para telas grandes
+     ============================ */
+  @media (width >= 80em) {
+
+    /* Ajuste do container principal */
+    .container {
+      padding-inline: 0;                /* Remove padding lateral */
+      padding-bottom: 2rem;             /* Espaço inferior adicional */
+    }
+
+    /* ----------------------------
+       Layout superior reorganizado
+       .top vira um grid com duas colunas
+       ---------------------------- */
+    & .top {
+      grid-template-columns: auto 1fr;  /* 1ª coluna = logo, 2ª = listas */
+
+      & nav {
+        margin-left: auto;              /* Empurra o menu para a direita */
+
+        /* Cada coluna de links recebe largura fixa */
+        & ul {
+          width: 14rem;
+        }
+      }
+    }
+  }
+}
